@@ -1,0 +1,55 @@
+<?php
+class LocalValetDriver extends LaravelValetDriver
+{
+    /**
+     * Determine if the driver serves the request.
+     *
+     * @param  string  $sitePath
+     * @param  string  $siteName
+     * @param  string  $uri
+     * @return bool
+     */
+
+    public function serves($sitePath, $siteName, $uri) {
+        return ( file_exists($sitePath.'public/index.php') );
+    }
+
+    /**
+     * Get the fully resolved path to the application's front controller.
+     *
+     * @param  string  $sitePath
+     * @param  string  $siteName
+     * @param  string  $uri
+     * @return string
+     */
+    public function frontControllerPath($sitePath, $siteName, $uri)
+    {
+        //var_dump($_SERVER['REQUEST_URI']);
+
+        if(stripos($uri, 'db.php')){
+            return $sitePath.'/db.php';
+        }
+        return $sitePath.'/public/index.php';
+
+        // smart h
+        //andle the requests, defaulting to index.php in directories and hiding php extensions
+        /*$res = '';
+        var_dump($sitePath . $uri);
+        if ( is_dir($sitePath . $uri) && file_exists ( $sitePath . $uri . '/index.php' ) )
+            $res = $sitePath . $uri . '/index.php';
+        else if ( file_exists ( $sitePath . $uri )  )
+            $res = $sitePath . $uri;
+        else if ( file_exists ( $sitePath . $uri . '.php')  )
+            $res = $sitePath . $uri . '.php';
+        else
+            //return $sitePath . '/404.php';
+            $res = $sitePath.'/index.php';
+        var_dump($res);
+        die;
+        //var_dump($res, $_SERVER['REQUEST_URI']);
+        return  $res;*/
+
+
+
+    }
+}

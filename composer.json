@@ -1,0 +1,27 @@
+{
+    "name": "ady/mvp2",
+    "type": "project",
+    "autoload": {
+        "classmap": [
+            "src/",
+            "public/",
+            "controllers/",
+            "models/",
+            "utils/"
+        ],
+        "psr-4": {
+            "Ady\\Mvp2\\": "src/",
+            "Ady\\MVP2\\controllers\\": "controllers/",
+            "Ady\\MVP2\\models\\" : "models/",
+            "Ady\\MVP2\\utils\\" : "utils/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Adrian Apostol"
+        }
+    ],
+    "require": {
+        "klein/klein": "^2.1"
+    }
+}
